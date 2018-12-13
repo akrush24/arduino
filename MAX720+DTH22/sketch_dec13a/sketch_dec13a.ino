@@ -1,6 +1,11 @@
-// Example testing sketch for various DHT humidity/temperature sensors
+// http://robotclass.ru/tutorials/arduino-matrix-8x8-max7219/
 
 #include "DHT.h"
+#include <SPI.h>
+#include <Adafruit_GFX.h>
+#include <Max72xxPanel.h>
+
+
 #define DHTPIN 2 // what digital pin we're connected to
 // Uncomment whatever type you're using!
 //#define DHTTYPE DHT11 // DHT 11
@@ -22,17 +27,12 @@ int LED_MATRIX_PIN = 9;
 
 DHT dht(DHTPIN, DHTTYPE);
 
-#include <SPI.h>
-#include <Adafruit_GFX.h>
-#include <Max72xxPanel.h>
-
-
 int numberOfHorizontalDisplays = 1; // числа матрец по горизонтале
-int numberOfVerticalDisplays = 1; // числа матрец по вертикале
+int numberOfVerticalDisplays = 1;   // числа матрец по вертикале
 
 Max72xxPanel matrix = Max72xxPanel(LED_MATRIX_PIN, numberOfHorizontalDisplays, numberOfVerticalDisplays);
 
-int wait = 120; // время между крайними перемещениями букв
+int wait = 150; // время между крайними перемещениями букв
 
 int spacer = 0; // расстояние между буквами
 int width = 6 + spacer; // размер шрифта
